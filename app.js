@@ -21,6 +21,7 @@ const User=require("./models/users.js");
 const userRouter=require("./Routes/users.js");
 
 const dbUrl=process.env.ATLASDB_URL
+const port = process.env.PORT || 3000;
 
 
 
@@ -101,8 +102,7 @@ app.use((err, req, res, next) => {
     res.status(status).render("error.ejs", { err })
 });
 
-app.listen(3000, () => {
-    console.log("Listening to 3000")
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
-
 
