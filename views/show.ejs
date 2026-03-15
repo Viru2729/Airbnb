@@ -1,0 +1,165 @@
+<% layout("/layouts/boilerplate") %>
+
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+       <h3><%= list.title %></h3>
+
+
+      <!-- Image -->
+      <div class="show-img-wrapper mb-4 ">
+        <img src="<%= list.image.url %>" alt="Listing image" class="show-img">
+      </div>
+
+      <!-- Title -->
+       <p class="text-dark mb-3">
+       Owned BY: <%= list.owner.username %>
+      </p>
+      <p class="text-dark mb-3">
+        <%= list.location %>, <%= list.country %>
+      </p>
+
+       <!-- Description -->
+      <p class="text-dark mb-4">
+        <%= list.description %>
+      </p>
+
+      <!-- Price -->
+      <p class="fs-5 fw-semibold mb-3">
+        ₹ <%= list.price.toLocaleString("en-IN") %>
+        <span class="text-muted fw-normal"> / night</span>
+      </p>
+
+      <hr>
+
+      <!-- Actions -->
+       <% if(curUser && curUser._id.equals(list.owner._id)){%> 
+      <div class="d-flex gap-3 mt-4">
+        <a href="/listings/<%= list._id %>/edit" class="btn btn-outline-dark px-4">
+          Edit
+        </a>
+
+        <form method="post" action="/listings/<%= list._id %>/delete?_method=DELETE">
+          <button class="btn btn-outline-danger px-4">
+            Delete
+          </button>
+        </form>
+      </div>
+      <hr class="my-5">
+    <% } %>
+
+    <% if(curUser) {%>
+    <h4 class="mb-3 fw-semibold">Leave a Review</h4>
+
+  <form action="/listings/<%= list._id %>/reviews" method="POST">
+
+  <div class="mb-3">
+    <label class="form-label">Rating</label>
+    <select name="review[rating]" class="form-select w-25">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Comment</label>
+      <textarea name="review[comment]" class="form-control" rows="3"></textarea>
+  </div>
+  <button class="btn btn-warning">Submit Review </button>
+</form>
+
+<%}%>
+</div>
+</div>
+<br><br>
+
+<% if(list.reviews.length >0) {%>
+<h4 class="mb-4 fw-semibold">Reviews</h4>
+
+<div class="row g-4">
+
+  <% for(let review of list.reviews){ %>
+
+    <div class="col-12 col-md-6">
+
+      <div class="card border-0 shadow-bold h-100 review-card">
+
+        <div class="card-body">
+
+          <!-- Rating -->
+          <div class="mb-2">
+              <p class="mb-3 text-dark review-comment">
+               <%= review.author.username%>
+              </p>
+
+            <% for(let i=1; i<=5; i++){ %>
+              <% if(i <= review.rating){ %>
+                <i class="fa-solid fa-star text-danger"></i>
+              <% } else { %>
+                <i class="fa-regular fa-star text-secondary"></i>
+              <% } %>
+            <% } %>
+
+          </div>
+
+          <!-- Comment -->
+          <p class="mb-3 text-dark review-comment">
+            <%= review.comment %>
+          </p>
+
+          <!-- Date -->
+          <small class="text-muted">
+            <%= review.createdAt.toDateString() %>
+          </small>
+
+        </div>
+        <form method="post" action="/listings/<%=list._id%>/reviews/<%=review._id%>?_method=DELETE">
+          <button class=" btn btn-outline-danger mb-3 bt dele"> Delete</button>
+        </form>
+
+      </div>
+
+    </div>
+
+  <% } %>
+
+</div>
+<%}%>
+<br><br>
+<div class="col-6 offset-2">
+  <h3>Where You'll be</h3>
+  <div id="map"></div>
+</div>
+</div>
+
+<script>
+const coordinates = <%- JSON.stringify(list.geometry.coordinates) %>;
+
+const map = new maplibregl.Map({
+container: "map",
+style: `https://api.maptiler.com/maps/streets/style.json?key=<%= mapToken %>`,
+center: coordinates,
+zoom: 12
+});
+
+// popup
+const popup = new maplibregl.Popup({ offset: 25 })
+.setHTML("<h6><%= list.title %></h6><p>Exact location will be provided after booking</p>");
+
+// marker with popup
+new maplibregl.Marker({ color: "red" })
+.setLngLat(coordinates)
+.setPopup(popup)
+.addTo(map);
+
+// optional: zoom buttons like Airbnb
+map.addControl(new maplibregl.NavigationControl());
+
+</script>
+
+
+

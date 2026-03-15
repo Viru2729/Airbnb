@@ -1,0 +1,86 @@
+<% layout("/layouts/boilerplate")%>
+<body>
+    <br>
+    <div class="row">
+    <div class="col-8 offset-2">
+    <h3> Edit the Listing</h3>
+    <form method="post" 
+    action="/listings/<%= list._id %>?_method=PATCH"  
+    novalidate 
+    class="needs-validation"
+    enctype="multipart/form-data">
+
+    <div class="mb-3">
+     <label for="title" class="form-label"> Title </label>
+    <input 
+    name="Listing[title]" 
+    value="<%=list.title%>"
+    class="form-control" 
+    required>
+    <div class="valid-feedback">Looks good!</div>
+    </div>
+
+    <div class="mb-3">
+    <label for="title" class="form-label"> Description </label>
+    <textarea 
+    name="Listing[description]" class="form-control" required><%=list.description%>
+    </textarea>
+    <div class="invalid-feedback">Enter a short description </div>
+    </div> 
+
+    <div class="mb-3">
+    Orginal Listing Image <br>
+    <img src="<%=originalurl %>" alt="Old Image" height="150px" width="200px">
+    </div>
+
+    <div class="mb-3">
+    <label for="title" class="form-label"> Upload New Image</label>
+    <input 
+    type="file"
+    name="Listing[image][url]"
+    class="form-control">  
+    </div>
+
+
+<div class="row">
+    <div class="mb-3 col-md-4">
+    <label for="title" class="form-label"> Price </label>
+    <input 
+    name="Listing[price]" 
+    type="number" 
+    value="<%=list.price%>"
+    class="form-control"
+    required>
+    <div class="invalid-feedback">Enter a Valid Price</div>
+    </div>
+
+    <div class="mb-3 col-md-8">
+    <label for="title" class="form-label"> Location </label>
+     <input 
+     name="Listing[location]" 
+     value="<%= list.location%>"
+     class="form-control"
+     required>
+    <div class="invalid-feedback">Enter a valid Location </div>    
+    </div>
+</div>
+
+    <div class="mb-3">
+    <label for="title" class="form-label"> Country </label>
+    <input 
+    name="Listing[country]" 
+    value="<%= list.country%>"
+    class="form-control"
+    required>
+    <div class="invalid-feedback">Enter a valid Country </div>    
+    </div>
+
+        <button class="btn btn-dark edit-btn"> Edit </button>
+        <br><br>
+    </form>
+</div>
+</div>
+
+
+<script src="/public/css/JS/script.js"></script>
+</body>

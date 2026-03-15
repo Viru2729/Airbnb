@@ -1,0 +1,416 @@
+/* ================= NAVBAR ================= */
+
+.navbar{
+height:70px;
+padding:0 40px;
+background:white;
+}
+
+/* AIRBNB ICON */
+
+.fa-airbnb{
+font-size:28px;
+color:#ff385c;
+}
+
+/* BRAND TEXT */
+
+.brand-name{
+font-weight:600;
+font-size:18px;
+}
+
+/* NAV LINKS */
+
+.nav-link{
+color:#222 !important;
+font-weight:500;
+margin-left:12px;
+}
+
+.nav-link:hover{
+color:#000 !important;
+}
+
+
+/* ================= SEARCH BAR ================= */
+
+.search-bar{
+display:flex;
+align-items:center;
+background:white;
+border:1px solid #ddd;
+border-radius:40px;
+padding:6px 8px;
+gap:8px;
+box-shadow:0 1px 6px rgba(0,0,0,0.1);
+}
+
+.search-input{
+border:none;
+outline:none;
+padding:6px 12px;
+width:200px;
+font-size:14px;
+}
+
+.search-input:focus{
+box-shadow:none;
+}
+
+.search-btn{
+background:#ff385c;
+border:none;
+color:white;
+border-radius:50%;
+height:34px;
+width:34px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+}
+
+.search-btn:hover{
+background:#e11d48;
+}
+
+/* CENTER SEARCH */
+
+.navbar .mx-auto{
+display:flex;
+justify-content:center;
+flex:1;
+}
+
+
+/* ================= MOBILE FIX ================= */
+
+@media (max-width:768px){
+
+.navbar{
+padding:0 20px;
+}
+
+/* dropdown menu style */
+
+.navbar-collapse{
+background:white;
+padding:15px;
+margin-top:10px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* stack items */
+
+.navbar-nav{
+align-items:flex-start !important;
+gap:8px;
+}
+
+/* search mobile */
+
+.search-bar{
+width:100%;
+margin:10px 0;
+}
+
+.search-input{
+width:100%;
+}
+
+}
+
+
+
+/* FOOTER WRAPPER */
+.f-info {
+    background-color: #f7f7f7;
+    border-top: 1px solid #ddd;
+    padding: 1.5rem 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    font-size: 0.9rem;
+    color: #222;
+}
+
+.f-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.f-content p {
+    margin: 0;
+    cursor: pointer;
+}
+
+.f-content p:hover {
+    text-decoration: underline;
+}
+
+/* SOCIAL ICONS */
+.f-socials {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.f-socials i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #222;
+}
+
+.f-socials i:hover {
+    color: #ff385c; 
+}
+
+.f-copy {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.f-copy p {
+    margin: 0;
+}
+
+.f-copy a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+}
+
+.f-copy a:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+    .f-info {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .f-content,
+    .f-copy {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+    border-radius: 0;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100%;
+    height:250px;
+    object-fit: cover;
+}
+
+.img-wrapper{
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+
+.card-body p a {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 600;
+}
+
+.card-body p{
+     font-family: "Plus Jakarta Sans", sans-serif;
+     font-weight: 600;
+}
+
+.listing-src{
+    text-decoration: none;   
+}
+
+.card-img-top {
+    transition: transform 0.25s ease;
+}
+
+.img-wrapper:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    transition: transform 0.25s ease;
+}
+
+.add-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.edit-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.review-card {
+
+border-radius: 14px;
+transition: all 0.25s ease;
+
+}
+
+.review-card:hover {
+
+transform: translateY(-4px);
+
+box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+
+}
+
+.review-comment {
+
+font-size: 0.95rem;
+font-weight: 500;
+line-height: 1.5;
+
+}
+
+.dele{
+    margin-left: 1rem;
+}
+
+#map{
+height:400px;
+width:100%;
+border-radius:10px;
+}
+
+
+/* navbar edit again */
+/* wrapper */
+
+/* ================= FILTER BAR ================= */
+
+.filters-wrapper{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:18px 40px;
+background:white;
+border-bottom:1px solid #eee;
+gap:20px;
+}
+
+/* category container */
+
+.filters{
+display:flex;
+align-items:center;
+gap:28px;
+overflow-x:auto;
+scroll-behavior:smooth;
+flex:1;
+}
+
+.filters::-webkit-scrollbar{
+display:none;
+}
+
+/* individual filter */
+
+.filter{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+min-width:75px;
+color:#6b6b6b;
+cursor:pointer;
+transition:0.2s;
+text-decoration:none;
+}
+
+.filter i{
+font-size:20px;
+margin-bottom:4px;
+}
+
+.filter p{
+font-size:12px;
+margin:0;
+font-weight:500;
+white-space:nowrap;
+}
+
+.filter:hover{
+color:black;
+}
+
+/* right side controls */
+
+.filter-controls{
+display:flex;
+align-items:center;
+gap:15px;
+flex-shrink:0;
+}
+
+/* toggle */
+
+.tax-toggle{
+display:flex;
+align-items:center;
+gap:10px;
+border:1px solid #ddd;
+padding:6px 14px;
+border-radius:12px;
+font-size:14px;
+background:white;
+white-space:nowrap;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:900px){
+
+.filters-wrapper{
+padding:15px 20px;
+}
+
+.filters{
+gap:22px;
+}
+
+.filter i{
+font-size:18px;
+}
+
+.filter p{
+font-size:11px;
+}
+
+}
+
+.tax-info{
+    display: none;
+}
+
+.show-img{
+width:100%;
+max-width:750px;
+height:450px;
+object-fit:cover;
+border-radius:20px;
+display:block;
+margin:20px auto;
+box-shadow:0 4px 20px rgba(0,0,0,0.08);
+}

@@ -1,0 +1,91 @@
+<% layout("/layouts/boilerplate")%>
+<body>
+    <br>
+    <div class="row">
+    <div class="col-8 offset-2">
+    <h3> Airbnb your home</h3><br>
+    <form method="post" action="/listings/post" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div  class="mb-3">
+         <label for="title" class="form-label"> Title </label>
+            <input 
+            name="Listing[title]" 
+            placeholder="Enter the Title"
+            type="text"
+            class="form-control"
+            required>
+        <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+             <label for="description" class="form-label"> Description </label>
+             <textarea 
+             name="Listing[description]" 
+             class="form-control"
+             required></textarea>
+        <div class="invalid-feedback">Enter a short description </div>
+        </div>
+         <div class="mb-3">
+        <label for="image" class="form-label"> Upload Image </label>
+         <input 
+         type="file" 
+         name="Listing[image][url]"
+        class="form-control"
+        required>
+        <div class="invalid-feedback">Upload the image</div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="mb-3 col-md-4">
+            <label for="price" class="form-label"> Price </label>
+                <input 
+                name="Listing[price]"  
+                placeholder="Enter Price"
+                class="form-control"
+                required>
+             <div class="invalid-feedback">Enter valid Price! </div>
+            </div>
+
+            <div class="mb-3 col-md-8">
+            <label for="country" class="form-label"> Country</label>
+            <input 
+            name="Listing[country]" 
+            placeholder=" Enter country"
+            class="form-control"
+            required>
+          <div class="invalid-feedback">Enter valid Country  </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+        <label for="location" class="form-label"> Location </label>
+        <input 
+        name="Listing[location]" 
+        placeholder="Enter location"
+        class="form-control"
+        required>
+        <div class="invalid-feedback">Enter a valid Location </div>
+
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Category</label>
+                <select name="Listing[category]" class="form-control">
+                <option value="Trending">Trending</option>
+                <option value="Rooms">Rooms</option>
+                <option value="Iconic Cities">Iconic Cities</option>
+                <option value="Mountains">Mountains</option>
+                <option value="Castles">Castles</option>
+                <option value="Amazing Pools">Amazing Pools</option>
+                <option value="Camping">Camping</option>
+                <option value="Farms">Farms</option>
+                <option value="Arctic">Arctic</option>
+            </select>
+       </div>
+
+        <button class="btn btn-dark add-btn"> Add Listing </button><br><br><br><br>
+    </form>
+</div>
+</div>
+</body>

@@ -1,0 +1,101 @@
+<% layout("/layouts/boilerplate")%>
+<body>
+    <div class="filters-wrapper">
+<div class="filters">
+
+  <a href="/listings?category=Trending" class="filter">
+    <i class="fa-solid fa-fire"></i>
+    <p>Trending</p>
+  </a>
+
+  <a href="/listings?category=Rooms" class="filter">
+    <i class="fa-solid fa-bed"></i>
+    <p>Rooms</p>
+  </a>
+
+  <a href="/listings?category=Iconic Cities" class="filter">
+    <i class="fa-solid fa-city"></i>
+    <p>Iconic Cities</p>
+  </a>
+
+  <a href="/listings?category=Mountains" class="filter">
+    <i class="fa-solid fa-mountain"></i>
+    <p>Mountains</p>
+  </a>
+
+  <a href="/listings?category=Castles" class="filter">
+    <i class="fa-solid fa-chess-rook"></i>
+    <p>Castles</p>
+  </a>
+
+  <a href="/listings?category=Amazing Pools" class="filter">
+    <i class="fa-solid fa-water-ladder"></i>
+    <p>Amazing Pools</p>
+  </a>
+
+  <a href="/listings?category=Camping" class="filter">
+    <i class="fa-solid fa-campground"></i>
+    <p>Camping</p>
+  </a>
+
+  <a href="/listings?category=Farms" class="filter">
+    <i class="fa-solid fa-cow"></i>
+    <p>Farms</p>
+  </a>
+
+  <a href="/listings?category=Arctic" class="filter">
+    <i class="fa-regular fa-snowflake"></i>
+    <p>Arctic</p>
+  </a>
+
+</div>
+
+  <div class="filter-controls">
+
+
+    <div class="tax-toggle">
+      <span>Display total before taxes</span>
+
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="switchCheckDefault">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+    
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    <% for (let list of Listings) { %>
+        <a class="listing-src"  href="/listings/<%=list._id%>">
+        <div class="col">
+            <div class="card h-100">
+                <div class="img-wrapper">
+                     <img src="<%= list.image.url %>" class="card-img-top" alt="Listing_image">
+                </div>
+                <div class="card-body">
+                    <p class="card-text"> <%= list.title %></p>
+                    <p>₹ <%= (list.price || 0).toLocaleString("en-IN") %> / night</p>
+                    <i class="tax-info"> &nbsp; 18% GST</i>
+                </div>
+            </div>
+        </div>
+        </a>
+    <% } %>
+</div>
+
+
+<script>
+    let priceTogle=document.getElementById("switchCheckDefault");
+    priceTogle.addEventListener("click",()=>{
+        let taxInfo=document.getElementsByClassName("tax-info");
+        for(let tax of taxInfo){
+            if(tax.style.display !="inline"){
+            tax.style.display="inline"}
+            else{ tax.style.display="none"}
+        }
+    })
+</script>
+</body>
+

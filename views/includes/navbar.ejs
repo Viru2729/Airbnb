@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-md border-bottom sticky-top bg-white">
+
+<div class="container-fluid">
+
+<a class="navbar-brand d-flex align-items-center gap-2" href="/listings">
+<i class="fa-brands fa-airbnb"></i>
+<span class="brand-name">Explore</span>
+</a>
+
+<button class="navbar-toggler" type="button"
+data-bs-toggle="collapse"
+data-bs-target="#navbarNavAltMarkup">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+<!-- CENTER SEARCH -->
+<div class="mx-auto">
+
+<form class="search-bar d-flex align-items-center" role="search" action="/listings" method="GET">
+
+  <input
+    name="location"
+    class="search-input"
+    type="search"
+    placeholder="Search destinations"
+  />
+
+  <button class="search-btn" type="submit">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+
+</form>
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="navbar-nav ms-auto align-items-center">
+
+<a class="nav-link" href="/listings/new">Become a host</a>
+
+<% if(!curUser){ %>
+<a class="nav-link" href="/signup"><b>Sign up</b></a>
+<a class="nav-link" href="/login"><b>Log in</b></a>
+<% } %>
+
+<% if(curUser){ %>
+<a class="nav-link" href="/logout"><b>Log out</b></a>
+<% } %>
+
+</div>
+
+</div>
+</div>
+</nav>
