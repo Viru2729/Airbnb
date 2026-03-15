@@ -40,12 +40,12 @@ data-bs-target="#navbarNavAltMarkup">
 
 <a class="nav-link" href="/listings/new">Become a host</a>
 
-<% if(!curUser){ %>
+<% if(!locals.curUser){ %>
 <a class="nav-link" href="/signup"><b>Sign up</b></a>
 <a class="nav-link" href="/login"><b>Log in</b></a>
 <% } %>
 
-<% if(curUser){ %>
+<% if(locals.curUser){ %>
 <a class="nav-link" href="/logout"><b>Log out</b></a>
 <% } %>
 
