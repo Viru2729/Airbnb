@@ -87,7 +87,6 @@ app.use((req,res,next)=>{
 });
 
 
-
 app.use("/listings" ,listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/", userRouter);
@@ -101,6 +100,7 @@ app.use((err, req, res, next) => {
     let { status = 400, message = "Some Eroor" } = err;
     res.status(status).render("error.ejs", { err })
 });
+
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
